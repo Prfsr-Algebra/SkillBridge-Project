@@ -128,3 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK ={
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framwork_simpleJWT.Authentication.JWTAuthentication')
 }
+AUTH_USER_MODEL = 'users.CustomUser'
