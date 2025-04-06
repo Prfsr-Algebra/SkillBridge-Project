@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-29nx37a5&c&z+!4hu_&&z&j*(@ee9d^ws@dms=mx12b(#q)c8(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'users',
-    'Jobpost'
+    'Jobpost',
+    'Application',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK ={
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'                               
-        ]
+        ],
+        'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.openapi.AutoSchema'
 }
 AUTH_USER_MODEL = 'users.CustomUser'

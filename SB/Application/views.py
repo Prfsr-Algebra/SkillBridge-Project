@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from rest_framework import generics, permissions
+from rest_framework import viewsets, permissions
 from rest_framework.exceptions import ValidationError, PermissionDenied
 from .models import Application
 from .serializers import ApplicationSerializer
-from Jobpost.models import JobPost
+from Jobpost.models import Jobpost
 # Create your views here.
-class ApplyView(generics.CreateAPIView):
+class ApplyView(viewsets.ModelViewSet):
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]
     def perform_create(self, serializer):
         job_id = self.kwargs['id']
-        job = JobPost.objects.all(id = job_id)
-        if Application.objects.filter(job = job, applicant = self.request.user).exist:
+        job = JobPost.objects.get(id = job_id)
+        if Application.objects.filter(job = job, applicant = self.request.user).exists():
             raise ValidationError("you've already applied to this job")
         serializer.save(applicant = self.request.user, job = job)
-class UpdateStatusView(generics.UpdateAPIView):
+class UpdateStatusView(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]

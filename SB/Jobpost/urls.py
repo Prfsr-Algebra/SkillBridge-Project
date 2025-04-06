@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import JobPostViews
 from django.urls import path, include
 router = DefaultRouter()
-router.register(r'jobs', JObPostViews)
+router.register(r'jobs', JobPostViews, basename= 'job')
 urlpatterns = [
-    path('jobs/', include (router.urls))
+    path('', include (router.urls))
 ]

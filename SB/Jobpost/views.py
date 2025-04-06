@@ -4,10 +4,10 @@ from .serializers import JobpostSerializers
 from .models import Jobpost
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-class JObPostViews(viewsets.ModelViewSet):
+class JobPostViews(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    querryset = Jobpost.objects.all()
+    queryset = Jobpost.objects.all()
     serializer_class = JobpostSerializers
     def perform_created(self, serializer):
         serializer.save(employer = self.request.user)

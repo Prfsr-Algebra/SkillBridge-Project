@@ -2,8 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import UpdateStatusView, ApplyView
 router = DefaultRouter()
-router.register(r'update', UpdateStatusView)
-router.register(r'Apply', ApplyView)
+router.register(r'update', UpdateStatusView, basename= 'update')
+router.register(r'Apply', ApplyView, basename= 'Apply')
 urlpatterns = [
-    path('api/', include(router.urls))
+    path('', include(router.urls)),
 ]

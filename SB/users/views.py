@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 class EmployerProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    querryset = EmployerProfile.objects.all()
+    queryset = EmployerProfile.objects.all()
     serializer_class = EmployerProfileSerializer
 class WorkerProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = [TokenAuthentication]
