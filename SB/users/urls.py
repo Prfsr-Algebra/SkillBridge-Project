@@ -5,5 +5,5 @@ router = DefaultRouter
 router.register(r'EmployerProfile', EmployerProfileViewSet)
 router.register('Worker_profile', WorkerProfileViewSet)
 urlspatterns = [
-    path('api/', include(router.urls))
+    path('users/', include(router.urls))
 ]

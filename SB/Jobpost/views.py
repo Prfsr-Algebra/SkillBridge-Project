@@ -9,4 +9,6 @@ class JObPostViews(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     querryset = Jobpost.objects.all()
     serializer_class = JobpostSerializers
+    def perform_created(self, serializer):
+        serializer.save(employer = self.request.user)
 # Create your views here.
